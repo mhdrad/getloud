@@ -1,8 +1,8 @@
-# My portfolio
+# Motivation
 
 I've created this repository with Next.js recommended technologies to excel my knowledge. Furthermore, I've used best practices to configure and implement this repository.
 
-I've utilized my portfolio with these tools:
+I've utilized this repo with these tools:
 
 - [Next.js](https://nextjs.org/) as the framework.
 - [Prisma](https://prisma.io/) is the ORM and hold db migrations
@@ -11,9 +11,9 @@ I've utilized my portfolio with these tools:
 - [Tailwind CSS](https://tailwindcss.com/) for styling.
 - [Vercel](https://vercel.com) for deployment and hosting.
 
-## Running locally
+## Running dev server
 
-Run the development server:
+Create .env file from example:
 
 ```bash
 # copy .env file
@@ -22,7 +22,7 @@ cp .env.example .env
 
 Open .env file and fill environment variables. (**Note that** Since I haven't run the code with MySQL, I recommend using [PlanetScale](https://planetscale.com).)
 
-Then:
+Then, Run the development server:
 
 ```bash
 # install dependencies
