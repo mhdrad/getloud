@@ -1,4 +1,4 @@
-import type { AppProps } from "next/app";
+import type { CustomAppProps } from "@/types/next";
 
 import { withTRPC } from "@trpc/next";
 import { loggerLink } from "@trpc/client/links/loggerLink";
@@ -10,15 +10,16 @@ import { AppRouter } from "@/server/routers/_app";
 
 import "@/styles/globals.css";
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({ Component, pageProps }: CustomAppProps) => {
+  const Layout = Component.Layout;
   return (
-    <>
+    <Layout>
       <Component {...pageProps} />
 
       {process.env.NODE_ENV !== "production" && (
         <ReactQueryDevtools initialIsOpen={false} />
       )}
-    </>
+    </Layout>
   );
 };
 

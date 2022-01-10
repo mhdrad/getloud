@@ -1,12 +1,15 @@
-import type { NextPage } from "next";
-import { trpc } from "../utils/trpc";
+import type { PageWithLayout } from "@/types/next";
 
-const Home: NextPage = () => {
-  const posts = trpc.useQuery(["post.all"]);
+import { trpc } from "@/utils/trpc";
+import DefaultLayout from "@/components/layout/DefaultLayout";
+import PostList from "@/components/post/PostList";
+
+const Home: PageWithLayout = () => {
+  // const posts = trpc.useQuery(["post.all"]);
 
   return (
-    <main className="max-w-screen-xl mx-auto mt-2">
-      <h1 className="text-3xl font-bold">Recent Articles</h1>
+    <div className="pt-24">
+      {/* <h1 className="text-3xl font-bold">Recent Articles</h1>
 
       {posts.isLoading ?? <div>Loading...</div>}
 
@@ -20,9 +23,12 @@ const Home: NextPage = () => {
           </p>
           <p className="mt-3 text-base">{item.description}</p>
         </article>
-      ))}
-    </main>
+      ))} */}
+      <PostList />
+    </div>
   );
 };
+
+Home.Layout = DefaultLayout;
 
 export default Home;
