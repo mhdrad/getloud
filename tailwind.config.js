@@ -1,3 +1,5 @@
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./src/pages/**/*.tsx", "./src/components/**/*.tsx"],
   theme: {
@@ -6,6 +8,9 @@ module.exports = {
       md: "768px",
       lg: "1024px",
       xl: "1280px",
+    },
+    fontFamily: {
+      sans: ["Noto Sans Mono", ...fontFamily.sans],
     },
     extend: {
       colors: {
