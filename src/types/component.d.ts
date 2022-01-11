@@ -31,5 +31,6 @@ declare type CategoriesComponent = FC<{
     title: string;
     slug: string;
   }[];
-  currentSlug: string;
+  currentSlug: ?string;
+  lightMode: boolean;
 }>;
