@@ -1,9 +1,8 @@
-import { PostData } from "@/types/component";
 import { FC } from "react";
 import Article from "./Article";
 
 const PostList: FC = () => {
-  const post: PostData = {
+  const post = {
     id: 1,
     title: "Breaking to a new row with flexbox",
     createdAt: "August,3",
@@ -18,7 +17,7 @@ const PostList: FC = () => {
     ],
   };
 
-  const posts: PostData[] = [post, post, post, post, post, post, post, post];
+  const posts = [post, post, post, post, post, post, post, post];
 
   return (
     <div
@@ -41,7 +40,7 @@ const PostList: FC = () => {
               md:hover:animate-post-scale-in
             "
         >
-          <Article {...post} />
+          <Article {...i} />
         </div>
       ))}
     </div>

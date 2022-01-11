@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    .text-shadow-glitch {
+      text-shadow: 0 -4px 0 #c8ad49, 4px 0 0 #e26d3c, 0 3px 0 #5499d7;
+    }
+    .text-shadow-none {
+      text-shadow: none;
+    }
+  }
+}
