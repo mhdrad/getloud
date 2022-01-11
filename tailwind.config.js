@@ -2,6 +2,24 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: ["./src/pages/**/*.tsx", "./src/components/**/*.tsx"],
+  safelist: [
+    "text-black",
+    "text-white",
+    "text-gray",
+    "text-red",
+    "text-orange",
+    "text-yellow",
+    "text-lime",
+    "text-green",
+    "text-teal",
+    "text-cyan",
+    "text-sky",
+    "text-blue",
+    "text-violet",
+    "text-purple",
+    "text-fuchsia",
+    "text-pink",
+  ],
   theme: {
     screens: {
       sm: "640px",

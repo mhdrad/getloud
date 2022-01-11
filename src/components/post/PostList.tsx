@@ -13,7 +13,7 @@ const PostList: FC = () => {
       {
         title: "CSS",
         slug: "css",
-        color: "#5499d7",
+        color: "orange",
       },
     ],
   };
