@@ -1,4 +1,4 @@
-import type { PageWithLayout } from "@/types/next";
+import type { Page } from "@/types/next";
 
 import { trpc } from "@/utils/trpc";
 import DefaultLayout from "@/components/layout/DefaultLayout";
@@ -7,7 +7,7 @@ import Avatar from "@/components/profile/Avatar";
 import Hero from "@/components/profile/Hero";
 import Categories from "@/components/Categories";
 
-const Home: PageWithLayout = () => {
+const Home: Page = () => {
   // const posts = trpc.useQuery(["post.all"]);
 
   const post = {
