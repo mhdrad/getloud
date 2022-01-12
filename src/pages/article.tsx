@@ -1,12 +1,35 @@
 import type { PageWithLayout } from "@/types/next";
 
-import ArticleLayout from "@/components/layout/ArticleLayout";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { motion as Motion } from "framer-motion";
 
-import Categories from "@/components/Categories";
 import * as markdown from "@/lib/markdown";
 
+import ArticleLayout from "@/components/layout/ArticleLayout";
+import Categories from "@/components/Categories";
+
 const Article: PageWithLayout = ({ post, content }: any) => {
-  // const posts = trpc.useQuery(["post.all"]);
+  const [curserX, setCurserX] = useState(null);
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleBackButtonMotion);
+
+    return () => {
+      window.removeEventListener("mousemove", handleBackButtonMotion);
+    };
+  }, []);
+
+  const handleBackButtonMotion = ({ pageX: x, pageY: y }: MouseEvent) => {
+    // object follow mouse curser only in header
+    if (y < 40) {
+      let objX = x;
+      // dont let the object go outside
+      if (objX - 80 < 0) objX = 100;
+      if (objX + 80 > window.innerWidth) objX = window.innerWidth - 100;
+
+      setCurserX(objX - 100);
+    }
+  };
 
   const categories = [
     {
@@ -28,10 +51,13 @@ const Article: PageWithLayout = ({ post, content }: any) => {
   ];
   return (
     <div className="p-10 pt-0">
-      <div className="h-10 relative">
-        <a
+      <div className="h-10 relative overflow-hidden">
+        <Motion.a
+          className="text-gray-dark h-10 px-4 flex items-center opacity-40 transition-opacity hover:text-white hover:opacity-90"
           href="#"
-          className="text-gray-dark h-10 px-4 flex items-center absolute left-1/2 opacity-40 transition-opacity hover:text-white hover:opacity-80"
+          style={{ x: "50%" }}
+          animate={{ x: curserX }}
+          transition={{ ease: "linear", duration: 0.2 }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +74,7 @@ const Article: PageWithLayout = ({ post, content }: any) => {
             />
           </svg>
           Back
-        </a>
+        </Motion.a>
       </div>
       <div className="bg-white text-black relative pt-10">
         <div className="container mx-auto">
