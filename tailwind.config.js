@@ -58,7 +58,26 @@ module.exports = {
       animation: {
         "post-scale-in": "post-scale-in 0.1s both",
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            "--tw-prose-links": theme("colors.orange"),
+            "--tw-prose-pre-code": theme("colors.black"),
+            "--tw-prose-pre-bg": theme("colors.sky"),
+            pre: {
+              borderRadius: 0,
+              padding: "14px 2.5rem",
+              margin: "14px -2.5rem",
+            },
+            code: {
+              backgroundColor: theme("colors.sky"),
+              color: theme("colors.black"),
+              padding: ".25rem",
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

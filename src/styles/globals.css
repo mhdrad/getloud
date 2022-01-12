@@ -12,3 +12,12 @@
     }
   }
 }
+
+@import url("./hljs.magula.min.css");
+
+/* remove code container styles */
+pre code.hljs {
+  background-color: none;
+  color: none;
+  padding: 0;
+}
