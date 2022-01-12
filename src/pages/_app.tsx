@@ -5,6 +5,7 @@ import { loggerLink } from "@trpc/client/links/loggerLink";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import superjson from "superjson";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { AnimatePresence } from "framer-motion";
 
 import { AppRouter } from "@/server/routers/_app";
 
@@ -14,11 +15,14 @@ const MyApp = ({ Component, pageProps }: CustomAppProps) => {
   const Layout = Component.Layout;
   return (
     <Layout>
-      <Component {...pageProps} />
-
-      {process.env.NODE_ENV !== "production" && (
-        <ReactQueryDevtools initialIsOpen={false} />
-      )}
+      <>
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <Component {...pageProps} />
+        </AnimatePresence>
+        {process.env.NODE_ENV !== "production" && (
+          <ReactQueryDevtools initialIsOpen={false} />
+        )}
+      </>
     </Layout>
   );
 };

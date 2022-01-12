@@ -1,9 +1,22 @@
-import { PostComponent } from "@/types/component";
+import type { FC } from "react";
 import Link from "next/link";
 
-const Article: PostComponent = ({ categories, title, url, createdAt }) => {
+type Props = {
+  id: number;
+  title: string;
+  slug: string;
+  categories: {
+    title: string;
+    slug: string;
+    color: string;
+  }[];
+  type: string;
+  createdAt: string;
+};
+
+const Article: FC<Props> = ({ categories, title, slug, createdAt }) => {
   return (
-    <Link href={url}>
+    <Link href={`/${slug}`}>
       <a className="flex w-full h-full flex-col py-[18px] px-6">
         <p className="lg:absolute">
           {categories.map((c, index) => (

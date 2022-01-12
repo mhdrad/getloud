@@ -10,6 +10,23 @@ import Categories from "@/components/Categories";
 const Home: PageWithLayout = () => {
   // const posts = trpc.useQuery(["post.all"]);
 
+  const post = {
+    id: 1,
+    title: "Breaking to a new row with flexbox",
+    createdAt: "August,3",
+    type: "ARTICLE",
+    slug: "article",
+    categories: [
+      {
+        title: "CSS",
+        slug: "css",
+        color: "orange",
+      },
+    ],
+  };
+
+  const posts = [post, post, post, post, post, post, post, post];
+
   const categories = [
     {
       title: "HTML",
@@ -31,22 +48,6 @@ const Home: PageWithLayout = () => {
 
   return (
     <div className="pt-20">
-      {/* <h1 className="text-3xl font-bold">Recent Articles</h1>
-
-      {posts.isLoading ?? <div>Loading...</div>}
-
-      {posts.data?.map((item) => (
-        <article key={item.id} className="mt-5">
-          <h1 className="text-4xl tracking-tight font-extrabold">
-            {item.title}
-          </h1>
-          <p className="mt-3 text-gray-600 text-sm">
-            Posted by: {item.user.name}
-          </p>
-          <p className="mt-3 text-base">{item.description}</p>
-        </article>
-      ))} */}
-
       <div className="flex">
         <div className="w-80 h-80">
           <Avatar imageUrl="/avatar.png" title="Marius Vidal" />
@@ -65,7 +66,7 @@ const Home: PageWithLayout = () => {
       </div>
 
       <div className="py-20">
-        <PostList />
+        <PostList posts={posts} />
       </div>
     </div>
   );
