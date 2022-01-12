@@ -1,5 +1,4 @@
 import type { CategoriesComponent } from "@/types/component";
-import Image from "next/image";
 import Link from "next/link";
 
 const Categories: CategoriesComponent = ({

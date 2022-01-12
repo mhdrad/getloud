@@ -7,7 +7,7 @@ const PostList: FC = () => {
     title: "Breaking to a new row with flexbox",
     createdAt: "August,3",
     type: "ARTICLE",
-    url: "/article/braking-to-a-new-row-with-flexbox",
+    url: "/article",
     categories: [
       {
         title: "CSS",

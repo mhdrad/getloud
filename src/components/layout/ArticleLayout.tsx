@@ -1,9 +1,9 @@
 import type { FC } from "react";
 
-const ArticleLayout: FC = ({ children }) => (
+const DefaultLayout: FC = ({ children }) => (
   <>
     <main>{children}</main>
   </>
 );
 
-export default ArticleLayout;
+export default DefaultLayout;

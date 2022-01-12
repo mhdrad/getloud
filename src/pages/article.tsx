@@ -1,6 +1,7 @@
 import type { PageWithLayout } from "@/types/next";
 
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion as Motion } from "framer-motion";
 
 import * as markdown from "@/lib/markdown";
@@ -8,7 +9,12 @@ import * as markdown from "@/lib/markdown";
 import ArticleLayout from "@/components/layout/ArticleLayout";
 import Categories from "@/components/Categories";
 
-const Article: PageWithLayout = ({ post, content }: any) => {
+type Props = {
+  post: any;
+  content: string;
+};
+
+const Article: PageWithLayout<Props> = ({ post, content }) => {
   const [curserX, setCurserX] = useState(null);
 
   useEffect(() => {
@@ -52,29 +58,32 @@ const Article: PageWithLayout = ({ post, content }: any) => {
   return (
     <div className="p-10 pt-0">
       <div className="h-10 relative overflow-hidden">
-        <Motion.a
-          className="text-gray-dark h-10 px-4 flex items-center opacity-40 transition-opacity hover:text-white hover:opacity-90"
-          href="#"
-          style={{ x: "50%" }}
-          animate={{ x: curserX }}
-          transition={{ ease: "linear", duration: 0.2 }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-3 w-3 inline-block mr-[12px]"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        {/* eslint-disable-next-line @next/next/link-passhref */}
+        <Link href={"/"}>
+          <Motion.a
+            className="text-gray-dark h-10 px-4 flex items-center opacity-40 transition-opacity hover:text-white hover:opacity-90"
+            href="#"
+            style={{ x: "50%" }}
+            animate={{ x: curserX }}
+            transition={{ ease: "linear", duration: 0.2 }}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
-          Back
-        </Motion.a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-3 w-3 inline-block mr-[12px]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            Back
+          </Motion.a>
+        </Link>
       </div>
       <div className="bg-white text-black relative pt-10">
         <div className="container mx-auto">

@@ -55,7 +55,12 @@ const Home: PageWithLayout = () => {
           <Hero title="Marius Vidal" subtitle="Front-end developer" />
         </div>
         <div className="w-24">
-          <Categories homeTitle="All posts" items={categories} currentSlug="" />
+          <Categories
+            homeTitle="All posts"
+            items={categories}
+            currentSlug=""
+            lightMode={false}
+          />
         </div>
       </div>
 
