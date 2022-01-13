@@ -1,11 +1,5 @@
 import type { FC } from "react";
 
-const DefaultLayout: FC = ({ children }) => (
-  <>
-    <div className="container mx-auto">
-      <main>{children}</main>
-    </div>
-  </>
-);
+const DefaultLayout: FC = ({ children }) => <main>{children}</main>;
 
 export default DefaultLayout;

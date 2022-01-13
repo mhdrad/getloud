@@ -1,12 +1,11 @@
 import type { Page } from "@/types/next";
+import { useRouter } from "next/router";
 
 import * as markdown from "@/lib/markdown";
 
-import ArticleLayout from "@/components/layout/ArticleLayout";
-import Categories from "@/components/Categories";
+import DefaultLayout from "@/components/layout/DefaultLayout";
+import ArticleModal from "@/components/ArticleModal";
 import BackButton from "@/components/common/BackButton";
-import ShareButtons from "@/components/common/ShareButtons";
-import Typography from "@/components/common/Typography";
 
 type Props = {
   post: any;
@@ -14,6 +13,8 @@ type Props = {
 };
 
 const Article: Page<Props> = ({ post, content }) => {
+  const router = useRouter();
+
   const categories = [
     {
       title: "HTML",
@@ -33,41 +34,21 @@ const Article: Page<Props> = ({ post, content }) => {
     },
   ];
   return (
-    <div className="p-10 pt-0">
-      <BackButton />
-      <div className="bg-white text-black relative pt-10">
-        <ShareButtons />
-        <div className="container mx-auto">
-          <div className="flex">
-            <div className="flex-1">
-              <div>
-                <span className="text-orange">CSS</span>
-                <span className="ml-4">August,3</span>
-              </div>
-              <h1 className="text-6xl leading-snug mr-56 mt-4">
-                Breaking to a new row with flexbox
-              </h1>
-              <div className="ml-40 mr-80 my-14">
-                <Typography content={content} />
-              </div>
-            </div>
-
-            <div className="w-24">
-              <Categories
-                lightMode
-                homeTitle="All posts"
-                items={categories}
-                currentSlug={null}
-              />
-            </div>
-          </div>
-        </div>
+    <div>
+      <div className="overflow-hidden">
+        <BackButton
+          onClick={(e) => {
+            e.preventDefault();
+            router.push("/");
+          }}
+        />
       </div>
+      <ArticleModal post={post} content={content} categories={categories} />
     </div>
   );
 };
 
-Article.Layout = ArticleLayout;
+Article.Layout = DefaultLayout;
 
 export async function getStaticProps() {
   // get article content
